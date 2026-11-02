@@ -25,4 +25,4 @@ Django sam ustvari tudi druge sistemske tabele za prijavo, dovoljenja, skupine i
 
 ## Testni podatki
 
-Ukaz `ustvari_testne_uporabnike --izvozi-gesla` ustvari do 20 testnih učiteljev (`ucitelj1`–`ucitelj20`) in 100 učencev (`ucenec1`–`ucenec100`). Vsak učitelj dobi 2 predmeta, učenec 3. Nove račune ustvari le, če uporabniško ime še ne obstaja. Obstoječih gesel ne spreminja. Naključna gesla so v zasebnem CSV, ki **ne sme na GitHub**.
+Ukaz `ustvari_testne_uporabnike --izvozi-gesla` ustvari do 20 testnih učiteljev (`ucitelj1`–`ucitelj20`) in 100 učencev (`ucenec1`–`ucenec100`). Vsak učitelj dobi 2 predmeta, učenec 3. 
