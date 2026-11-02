@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Pregled | Šolska učilnica{% endblock %}
+{% block content %}
+<div class="naslovna-vrstica">
+  <div><p class="nadnaslov">PREGLED</p><h1>{% if je_admin %}Pregled šolske učilnice{% elif je_ucitelj %}Moji predmeti{% else %}Moja učilnica{% endif %}</h1>
+    <p class="podnaslov">Pregled predmetov, gradiv in nalog.</p></div>
+  <span class="oznaka-vloge">{{ vloga }}</span>
+</div>
+<section class="pasica">
+  <h2>{% if je_admin %}Upravljanje šolske učilnice{% elif je_ucitelj %}Moji predmeti in gradiva{% else %}Moje šolske obveznosti{% endif %}</h2>
+  <p>{% if je_admin %}Urejaj učitelje, učence, predmete in šolske datoteke.
+     {% elif je_ucitelj %}Izberi predmet za gradiva in naloge.
+     {% else %}Odpri predmet in preglej gradivo ali naloge.
+     {% endif %}</p>
+</section>
+<div class="statistika">
+  <div class="stat"><span>Predmeti</span><strong>{{ st_predmetov }}</strong></div>
+  <div class="stat"><span>Gradiva</span><strong>{{ st_gradiv }}</strong></div>
+  <div class="stat"><span>{% if je_admin or je_ucitelj %}Oddane naloge{% else %}Moje oddaje{% endif %}</span><strong>{{ st_nalog }}</strong></div>
+</div>
+<div class="naslov-sekcije"><h2>{% if je_admin %}Vsi predmeti{% else %}Moji predmeti{% endif %}</h2>
+  {% if je_admin %}<a href="{% url 'upravljanje_predmeti' %}" class="povezava">Upravljaj predmete</a>
+  {% elif not je_ucitelj %}<a href="{% url 'moji_predmeti' %}" class="povezava">Izberi predmete</a>{% endif %}</div>
+<div class="mreza-predmetov">
+  {% for p in predmeti %}
+  <article class="kartica-predmet"><h3>{{ p.naziv }}</h3><p>Šolski predmet</p>
+    <a href="{% url 'predmet' p.pk %}" class="povezava">Odpri predmet</a>
+  </article>
+  {% empty %}
+  <div class="prazno">Trenutno še nimaš dodeljenih predmetov.
+   {% if not je_admin and not je_ucitelj %}<p><a href="{% url 'moji_predmeti' %}">Izberi svoje predmete</a></p>{% endif %}
+  </div>{% endfor %}
+</div>
+{% endblock %}

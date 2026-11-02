@@ -1,0 +1,18 @@
+digraph ER {
+ graph [rankdir=LR, fontname="Arial", bgcolor="white", nodesep=0.6, ranksep=0.7]
+ node [shape=record, fontname="Arial", fontsize=11, style="rounded"]
+ edge [fontname="Arial", fontsize=10, color="black", arrowsize=0.65]
+ User [label="{auth_user | PK id\lusername\lfirst_name, last_name\lpassword (hash)\l}"];
+ Predmet [label="{Predmet | PK id\lnaziv\l}"];
+ Gradivo [label="{Gradivo | PK id\lFK predmet_id\lnaslov, datoteka\l}"];
+ Naloga [label="{Naloga | PK id\lFK predmet_id\lFK ucenec_id\lnaslov, datoteka\l}"];
+ PU [label="{Predmet_ucitelji | FK predmet_id\lFK user_id\l}"];
+ PS [label="{Predmet_ucenci | FK predmet_id\lFK user_id\l}"];
+ User -> PU [label="1 : N"];
+ Predmet -> PU [label="1 : N"];
+ User -> PS [label="1 : N"];
+ Predmet -> PS [label="1 : N"];
+ Predmet -> Gradivo [label="1 : N"];
+ Predmet -> Naloga [label="1 : N"];
+ User -> Naloga [label="1 : N"];
+}

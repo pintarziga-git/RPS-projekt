@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Uporabniki | Šolska učilnica{% endblock %}
+{% block content %}
+<div class="naslovna-vrstica"><div><h1>Učitelji in učenci</h1><p class="podnaslov">Upravljanje uporabnikov</p></div>
+<a href="{% url 'upravljanje_uporabnik_dodaj' %}" class="gumb">Dodaj uporabnika</a></div>
+<div class="panel"><form method="get" class="iskanje"><label for="isk">Poišči:</label><input id="isk" name="q" value="{{ q }}" placeholder="Ime, priimek ali uporabniško ime"><button type="submit" class="mali-gumb">Išči</button></form>
+<table class="preprosta-tabela"><thead><tr><th>Ime in priimek</th><th>Uporabniško ime</th><th>Vloga</th><th>Uredi</th></tr></thead><tbody>
+{% for vrstica in uporabniki %}<tr><td>{{ vrstica.uporabnik.get_full_name|default:vrstica.uporabnik.username }}</td><td>{{ vrstica.uporabnik.username }}</td><td>{{ vrstica.vloga }}</td><td><a href="{% url 'upravljanje_uporabnik_uredi' vrstica.uporabnik.pk %}" class="mali-gumb">Uredi</a></td></tr>
+{% empty %}<tr><td colspan="4">Ni vpisanih učencev ali učiteljev.</td></tr>{% endfor %}
+</tbody></table></div>
+<p><a href="{% url 'admin:index' %}" class="nazaj">Nazaj na administracijo</a></p>
+{% endblock %}

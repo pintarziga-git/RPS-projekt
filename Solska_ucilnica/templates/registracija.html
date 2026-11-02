@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Registracija | Šolska učilnica{% endblock %}
+{% block content %}
+<div class="ozka-stran"><section class="panel"><h1>Registracija učenca</h1>
+<p class="podnaslov">Ustvari račun in si nato izberi svoje predmete.</p>
+<form method="post" class="obrazec">{% csrf_token %}
+{% for field in form %}<div class="polje">{{ field.label_tag }}{{ field }}{% if field.help_text %}<small>{{ field.help_text|safe }}</small>{% endif %}{{ field.errors }}</div>{% endfor %}
+<button type="submit" class="gumb">Ustvari račun</button></form>
+<p class="pomocno"><a href="{% url 'prijava' %}">Nazaj na prijavo</a></p></section></div>
+{% endblock %}

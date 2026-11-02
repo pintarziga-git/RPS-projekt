@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Predmeti | Šolska učilnica{% endblock %}
+{% block content %}
+<div class="naslovna-vrstica"><div><h1>Predmeti</h1><p class="podnaslov">Seznam predmetov</p></div>
+<a href="{% url 'upravljanje_predmet_dodaj' %}" class="gumb">Dodaj predmet</a></div>
+<div class="panel">
+<form method="get" class="iskanje"><label for="isk">Poišči predmet:</label><input id="isk" name="q" value="{{ q }}" placeholder="Ime predmeta"><button type="submit" class="mali-gumb">Išči</button></form>
+<table class="preprosta-tabela"><thead><tr><th>Predmet</th><th>Uredi</th></tr></thead><tbody>
+{% for predmet in predmeti %}<tr><td>{{ predmet.naziv }}</td><td><a href="{% url 'upravljanje_predmet_uredi' predmet.pk %}" class="mali-gumb">Uredi</a></td></tr>
+{% empty %}<tr><td colspan="2">Ni predmetov.</td></tr>{% endfor %}
+</tbody></table>
+</div>
+<p><a href="{% url 'admin:index' %}" class="nazaj">Nazaj na administracijo</a></p>
+{% endblock %}

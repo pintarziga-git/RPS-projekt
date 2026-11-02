@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ p.naziv }} | Šolska učilnica{% endblock %}
+{% block content %}
+<a href="{% url 'domov' %}" class="nazaj">Nazaj na domačo stran</a>
+<div class="naslovna-vrstica predmet-naslov"><div><p class="nadnaslov">PREDMET</p><h1>{{ p.naziv }}</h1>
+  <p class="podnaslov">Gradiva in naloge za ta predmet.</p></div></div>
+<div class="dva-stolpca">
+ <div>
+  <section class="panel"><h2>Učna gradiva</h2>
+    <p class="pomocno">Klikni naslov gradiva, da preneseš datoteko.</p>
+    <div class="seznam">
+    {% for g in gradiva %}
+      <div class="vrstica"><div><strong>{{ g.naslov }}</strong><small>Datoteka za prenos</small></div>
+        <div class="dejanja"><a href="{% url 'gradivo_prenos' g.pk %}" class="mali-gumb">Prenesi</a>
+          {% if upravlja %}<form method="post" action="{% url 'brisi_gradivo' g.pk %}" onsubmit="return confirm('Ali res želiš izbrisati to gradivo?');">{% csrf_token %}<button type="submit" class="mali-gumb nevarno">Izbriši</button></form>{% endif %}
+        </div></div>
+    {% empty %}<p class="prazni-podatki">Pri tem predmetu še ni gradiv.</p>{% endfor %}
+    </div>
+  </section>
+  <section class="panel"><h2>{% if upravlja %}Oddane naloge učencev{% else %}Moje oddane naloge{% endif %}</h2>
+    <div class="seznam">
+    {% for n in naloge %}
+      <div class="vrstica"><div><strong>{{ n.naslov }}</strong>
+        <small>{% if upravlja %}Oddal: {{ n.ucenec.get_full_name|default:n.ucenec.username }}{% else %}Tvoja oddaja{% endif %}</small></div>
+        <a href="{% url 'naloga_prenos' n.pk %}" class="mali-gumb">Prenesi</a></div>
+    {% empty %}<p class="prazni-podatki">Ni oddanih nalog.</p>{% endfor %}
+    </div>
+  </section>
+ </div>
+ <div>
+  {% if upravlja %}
+  <section class="panel"><h2>Dodaj novo gradivo</h2>
+    <p class="pomocno">Naloži gradivo, ki ga bodo lahko prenesli učenci tega predmeta.</p>
+    <form method="post" enctype="multipart/form-data" class="obrazec">
+     {% csrf_token %}{% for field in gf %}<div class="polje">{{ field.label_tag }}{{ field }}{{ field.errors }}</div>{% endfor %}
+     <button name="dodaj_gradivo" value="1" class="gumb" type="submit">Dodaj gradivo</button>
+    </form>
+  </section>
+  {% else %}
+  <section class="panel"><h2>Oddaj nalogo</h2><p class="pomocno">Izberi datoteko in napiši naslov naloge.</p>
+    <form method="post" enctype="multipart/form-data" class="obrazec">
+    {% csrf_token %}{% for field in nf %}<div class="polje {% if field.name == 'potrdi' %}polje-potrdi{% endif %}">
+      {% if field.name == 'potrdi' %}<label class="checkbox-line">{{ field }} {{ field.label }}</label>{% else %}{{ field.label_tag }}{{ field }}{% endif %}
+      {{ field.errors }}</div>{% endfor %}
+      <p class="opomba">Če ponovno oddaš nalogo z enakim naslovom, označi potrditev. Prejšnja datoteka se bo zamenjala.</p>
+      <button name="oddaj_nalogo" value="1" class="gumb" type="submit">Oddaj nalogo</button>
+    </form>
+  </section>
+  {% endif %}
+  <div class="namig"><strong>Namig</strong><p>Dovoljene so datoteke PDF, Word, PowerPoint, slike, Excel, TXT in ZIP do 15 MB.</p></div>
+ </div>
+</div>
+{% endblock %}

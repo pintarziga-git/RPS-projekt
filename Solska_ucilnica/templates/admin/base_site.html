@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}{{ title }} | Šolska učilnica{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'admin/css/solska_admin.css' %}">{% endblock %}
+{% block branding %}<a href="{% url 'admin:index' %}" class="sc-brand">Šolska učilnica <span>Administracija</span></a>{% endblock %}
+{% block nav-global %}<div class="sc-top-links"><a href="{% url 'domov' %}">Domača stran</a></div>{% endblock %}
+{% block usertools %}
+<div id="user-tools"><a href="{% url 'admin:password_change' %}">Spremeni geslo</a> /
+<form action="{% url 'admin:logout' %}" method="post" style="display:inline">{% csrf_token %}<button type="submit" class="sc-odjava">Odjava</button></form></div>
+{% endblock %}
+{% block nav-sidebar %}{% endblock %}

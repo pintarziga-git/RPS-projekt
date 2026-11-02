@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Moj profil | Šolska učilnica{% endblock %}
+{% block content %}
+<a href="{% url 'domov' %}" class="nazaj">Nazaj na domačo stran</a>
+<div class="ozka-stran"><section class="panel"><p class="nadnaslov">PODATKI</p><h1>Moj profil</h1>
+<p class="podnaslov">Uporabniško ime: <strong>{{ user.username }}</strong><br>Vloga: {{ vloga }}</p>
+<form method="post" class="obrazec">{% csrf_token %}
+{% for field in form %}<div class="polje">{{ field.label_tag }}{{ field }}{{ field.errors }}</div>{% endfor %}
+<button type="submit" class="gumb">Shrani spremembe</button>
+</form></section></div>
+{% endblock %}

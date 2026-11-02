@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% block breadcrumbs %}{% endblock %}
+{% block content %}
+<div class="sc-dashboard">
+<p class="sc-eyebrow">ADMINISTRACIJA</p>
+<h1>Upravljanje šolske učilnice</h1>
+<p class="sc-muted">Izberi, kaj želiš urediti.</p>
+
+<div class="sc-grid">
+<a class="sc-card" href="{% url 'upravljanje_uporabniki' %}"><h2>Uporabniki</h2><p>Dodaj in uredi učence ali učitelje</p><b>Odpri uporabnike</b></a>
+<a class="sc-card" href="{% url 'upravljanje_predmeti' %}"><h2>Predmeti</h2><p>Dodaj in uredi predmete</p><b>Odpri predmete</b></a>
+<a class="sc-card" href="{% url 'admin:ucilnica_gradivo_changelist' %}"><h2>Gradiva</h2><p>Dodajanje in brisanje učnega gradiva</p><b>Odpri gradiva</b></a>
+<a class="sc-card" href="{% url 'admin:ucilnica_naloga_changelist' %}"><h2>Naloge</h2><p>Pregled oddanih nalog učencev</p><b>Odpri naloge</b></a>
+</div></div>
+{% endblock %}
+{% block sidebar %}{% endblock %}

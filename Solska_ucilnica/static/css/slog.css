@@ -1,0 +1,71 @@
+:root { --modra:#2e66d7;--modra-temna:#204dad;--ozadje:#f3f5f9;--bela:#fff;--besedilo:#17243b;--siva:#64748b;--rob:#dbe2ed; }
+* {box-sizing:border-box}
+body {margin:0;background:var(--ozadje);color:var(--besedilo);font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5}
+a {color:var(--modra-temna);text-decoration:none}
+a:hover {text-decoration:underline}
+.glava {background:var(--modra);color:white}
+.glava-notri {max-width:1160px;margin:auto;min-height:66px;display:flex;align-items:center;gap:32px;padding:12px 24px}
+.znamka {color:white;font-size:18px;font-weight:700;white-space:nowrap}
+.glavna-navigacija {display:flex;gap:24px;align-items:center}
+.glavna-navigacija a,.prijavljen {color:white}
+.glavna-navigacija a {font-weight:600}
+.prijavljen {margin-left:auto;display:flex;gap:16px;align-items:center;font-size:13px}
+.prijavljen form {margin:0}
+.gumb-odjava {background:transparent;border:1px solid rgba(255,255,255,.7);border-radius:5px;color:white;padding:7px 12px;cursor:pointer}
+.gumb-odjava:hover {background:rgba(255,255,255,.1)}
+.vsebina {max-width:1100px;min-height:calc(100vh - 133px);margin:0 auto;padding:30px 24px 50px}
+.noga {color:#77849a;text-align:center;font-size:12px;padding:15px}
+h1 {font-size:28px;line-height:1.25;margin:4px 0 8px}h2 {font-size:20px;margin:0 0 16px}h3 {font-size:17px;margin:0 0 6px}
+p {margin:8px 0 14px}.nadnaslov {font-size:11px;letter-spacing:1.1px;color:var(--modra-temna);font-weight:800;margin:0 0 6px}
+.podnaslov,.pomocno {color:var(--siva)}.pomocno {font-size:13px}
+.naslovna-vrstica {display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;gap:16px}
+.oznaka-vloge {background:#e3ecff;color:var(--modra-temna);padding:7px 12px;border-radius:6px;font-size:12px;font-weight:700;white-space:nowrap}
+.pasica {background:var(--modra);color:white;border-radius:10px;padding:25px 30px;margin-bottom:20px}
+.pasica h2 {margin:0 0 10px;font-size:22px}.pasica p {margin:0;max-width:650px}
+.statistika {display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0 30px}
+.stat {background:white;border:1px solid var(--rob);border-radius:9px;padding:18px 22px;display:flex;flex-direction:column}
+.stat span {color:var(--siva);font-size:13px}.stat strong {font-size:28px;margin-top:4px}
+.naslov-sekcije {display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:14px}
+.naslov-sekcije h2 {margin:0}.povezava {font-weight:700;font-size:13px}
+.mreza-predmetov {display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.kartica-predmet {background:white;border:1px solid var(--rob);border-radius:9px;padding:23px;min-height:151px}
+.kartica-predmet h3 {margin-bottom:10px}.kartica-predmet p {color:var(--siva);font-size:13px;margin-bottom:18px}
+.panel {background:#fff;border:1px solid var(--rob);border-radius:9px;padding:25px;margin-bottom:20px}
+.panel h2 {margin-top:0}.dva-stolpca {display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start}
+.predmet-naslov {margin:6px 0 22px}.nazaj {font-size:13px;display:inline-block;margin-bottom:14px}
+.seznam {margin-top:14px}.vrstica {padding:15px 0;border-top:1px solid var(--rob);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.vrstica strong {display:block}.vrstica small {display:block;color:var(--siva);margin-top:4px}
+.dejanja {display:flex;gap:7px;align-items:center}.dejanja form {margin:0}
+.mali-gumb {display:inline-block;background:#eaf0ff;border:1px solid #d2ddf8;padding:7px 11px;border-radius:5px;color:var(--modra-temna);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit}
+.nevarno {background:#fff1f1;color:#a22a2a;border-color:#f0d4d4}
+.prazni-podatki,.prazno {color:var(--siva);font-size:14px}
+.obrazec {margin-top:18px}.polje {margin-bottom:17px}.polje label:not(.checkbox-line) {display:block;font-weight:600;font-size:13px;margin-bottom:6px}
+.polje input:not([type=checkbox]),.polje select,.polje textarea {width:100%;min-height:41px;padding:9px 11px;border:1px solid #cbd5e1;border-radius:5px;background:white;color:var(--besedilo);font:inherit}
+.polje input[type=file] {min-height:41px;padding:8px;background:#fafbfd}
+.polje small {color:var(--siva);font-size:12px;display:block;margin-top:6px}.polje small ul {padding-left:17px}
+.polje .errorlist {font-size:12px;color:#ad2b2b;padding-left:18px;margin:5px 0}
+.gumb {background:var(--modra);border:0;border-radius:6px;color:white;font-size:14px;font-weight:700;padding:11px 17px;cursor:pointer}
+.gumb:hover {background:var(--modra-temna)}
+.checkbox-line {display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:500;cursor:pointer}
+.checkbox-line input {margin:3px 0}.opomba {font-size:12px;color:var(--siva)}
+.namig {background:#e8eef9;border-radius:8px;padding:18px 20px;font-size:13px}.namig p {margin:6px 0 0}
+.ozka-stran {max-width:580px;margin:10px auto}.ozka-stran h1 {margin-bottom:11px}
+.obvestilo {padding:12px 15px;margin:0 0 18px;border-radius:5px;border:1px solid #d6e2f6;background:#e9f1ff}
+.obvestilo.opozorilo {background:#fff0ee;border-color:#f4cfcb;color:#8b2828}.obvestilo.pozitivno {background:#eaf7ee;border-color:#c6e6cf;color:#225e33}
+.checklist {display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:22px 0}
+.predmet-check {border:1px solid var(--rob);border-radius:6px;padding:11px;background:#fbfcff;cursor:pointer}
+.predmet-check input {margin-right:6px}
+@media(max-width:800px){.glava-notri{flex-wrap:wrap;gap:13px}.prijavljen{margin-left:0;width:100%;justify-content:space-between}.mreza-predmetov{grid-template-columns:repeat(2,1fr)}.dva-stolpca{grid-template-columns:1fr}}
+@media(max-width:520px){.vsebina{padding:20px 15px}.glava-notri{padding:13px 15px}.glavna-navigacija{flex-wrap:wrap;gap:12px}.naslovna-vrstica{align-items:flex-start;flex-direction:column}.statistika{grid-template-columns:1fr;gap:8px}.mreza-predmetov,.checklist{grid-template-columns:1fr}.pasica,.panel{padding:20px}.vrstica{align-items:flex-start;flex-wrap:wrap}}
+
+/* Enostavne administratorske tabele in obrazci */
+.iskanje {display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 20px}
+.iskanje input {border:1px solid #cbd5e1;border-radius:5px;padding:9px;min-width:200px;flex:1}
+.preprosta-tabela{width:100%;border-collapse:collapse;text-align:left}
+.preprosta-tabela th,.preprosta-tabela td{border-bottom:1px solid var(--rob);padding:12px 9px}
+.preprosta-tabela th{font-size:13px;color:var(--siva);font-weight:700}
+.dodatne-nastavitve{border:1px solid var(--rob);border-radius:6px;padding:13px;margin:10px 0 20px}
+.dodatne-nastavitve summary{cursor:pointer;font-weight:600}
+.izbirni-seznam{border:1px solid var(--rob);border-radius:5px;background:#fbfcff;max-height:180px;overflow:auto;padding:8px 12px;margin:9px 0}
+.izbirni-seznam label{display:block;margin:5px 0;font-size:13px;font-weight:normal!important}
+@media(max-width:600px){.panel{overflow-x:auto}.preprosta-tabela{min-width:450px}}

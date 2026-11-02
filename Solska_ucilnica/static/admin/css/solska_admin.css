@@ -1,0 +1,68 @@
+/* Preprosta, svetla administratorska stran z enakimi barvami kot učilnica. */
+html[data-theme="dark"],html[data-theme="auto"],:root{
+ --primary:#2e66d7;--secondary:#204dad;--accent:#2e66d7;
+ --primary-fg:#fff;--body-bg:#f3f5f9;--body-fg:#17243b;
+ --header-bg:#2e66d7;--header-color:#fff;--header-link-color:#fff;
+ --breadcrumbs-bg:#e8eef9;--breadcrumbs-fg:#42536e;--breadcrumbs-link-fg:#204dad;
+ --link-fg:#204dad;--link-hover-color:#1e40af;
+ --darkened-bg:#f2f5fa;--selected-bg:#e9effc;--selected-row:#e9effc;
+ --border-color:#dbe2ed;--hairline-color:#e7ebf2;--button-bg:#2e66d7;
+ --button-hover-bg:#204dad;--default-button-bg:#2e66d7;
+ --default-button-hover-bg:#204dad;--message-success-bg:#e9f7ee;
+ color-scheme:light;
+}
+html[data-theme="dark"] body {background:#f3f5f9;color:#17243b}
+body {font-family:Arial,Helvetica,sans-serif;font-size:14px;background:#f3f5f9;color:#17243b}
+#header {min-height:66px;padding:14px 25px;box-sizing:border-box;gap:22px;align-items:center}
+#branding {float:none}#branding .sc-brand{font-size:19px;color:white;font-weight:700;text-decoration:none;white-space:nowrap}
+.sc-brand span {font-size:12px;font-weight:normal;margin-left:12px;color:#ecf2ff}
+.sc-top-links{display:flex;gap:18px;margin-left:10px;align-items:center}
+.sc-top-links a{color:white;font-size:13px;font-weight:600}
+#user-tools{color:white}#user-tools a{color:white}
+#content {padding:25px 30px 50px;max-width:1150px}
+#content h1{font-size:24px;font-weight:700;margin:5px 0 18px}
+#container {background:#f3f5f9}
+#main {min-height:calc(100vh - 80px)}
+#nav-sidebar {background:#fff;border-right:1px solid #dbe2ed;min-width:225px;max-width:225px;box-sizing:border-box;padding:25px 18px;position:sticky;top:0;align-self:stretch}
+#nav-sidebar .sc-side-title{color:#66758e;font-size:12px;font-weight:bold;letter-spacing:.7px;margin:0 0 13px 10px}
+#nav-sidebar>a{display:block;color:#243656;padding:11px 12px;margin:4px 0;border-radius:6px;font-weight:600;text-decoration:none}
+#nav-sidebar>a:hover{background:#e8effc;color:#204dad}
+#toggle-nav-sidebar{display:none}
+.module,.inline-group{background:#fff;border:1px solid #dbe2ed;border-radius:8px;overflow:hidden;margin-bottom:20px}
+.module h2,.module caption,.inline-group h2{background:#e8eef9;color:#243656;font-weight:700;padding:12px}
+#changelist .actions,#changelist-filter,#toolbar,.submit-row {background:#fff;border:1px solid #dbe2ed;border-radius:6px}
+#changelist table thead th,.module table thead th{background:#f5f7fb;color:#243656}
+#changelist table tbody td,.module table tbody td{padding-top:12px;padding-bottom:12px}
+input,select,textarea{border:1px solid #cbd5e1;border-radius:5px;padding:7px;color:#17243b;background:#fff}
+.button,input[type=submit],input[type=button],.submit-row input,.object-tools a{background:#2e66d7;color:#fff;border-radius:5px;box-shadow:none;padding:9px 14px;border:0}
+a{color:#204dad}.button:hover,input[type=submit]:hover,.object-tools a:hover{background:#204dad}
+.selector-available h2,.selector-chosen h2 {background:#e8eef9;color:#243656}
+.selector .selector-filter{background:#f5f7fa}
+.messagelist li{border-radius:6px}
+#content-main{min-width:0}
+.sc-dashboard{max-width:980px;margin:0 auto}.sc-eyebrow{font-size:11px;letter-spacing:1px;color:#204dad;font-weight:700}
+.sc-dashboard h1{font-size:26px!important;margin:5px 0 8px!important}.sc-muted{color:#66758e;margin-bottom:25px}
+.sc-banner{padding:25px 28px;background:#2e66d7;color:white;border-radius:10px;margin:20px 0 22px}
+.sc-banner h2{font-size:21px;margin:0 0 6px;color:white}.sc-banner p{margin:0}
+.sc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.sc-card{background:#fff;border:1px solid #dbe2ed;padding:23px;border-radius:9px;text-decoration:none!important;display:block}
+.sc-card h2{margin:0 0 10px;color:#17243b;font-size:18px}.sc-card p{color:#66758e;font-size:13px;margin:0 0 18px}
+.sc-card b{color:#204dad;font-size:13px}
+/* Tudi pri nastavitvi temne teme uporabi svetle osnovne barve. */
+.theme-toggle{display:none}
+@media(max-width:900px){#nav-sidebar{display:none}#content{padding:20px}#header{flex-wrap:wrap}.sc-grid{grid-template-columns:1fr}}
+
+/* Povezave imajo besedilo, brez dekorativnih ikon. */
+.addlink,.changelink,.deletelink,.viewlink,.historylink{background-image:none!important;padding-left:8px!important}
+
+/* Popravek postavitve: nič več odrezane leve strani. */
+html,body,#container {max-width:100%;overflow-x:hidden}
+#main {display:block!important;min-width:0!important;width:100%!important}
+#content {box-sizing:border-box!important;width:min(1100px, calc(100% - 32px))!important;max-width:1100px!important;margin:24px auto 40px!important;padding:15px 12px 35px!important;float:none!important;position:relative!important;left:auto!important;right:auto!important;transform:none!important}
+#content-main {width:100%!important;min-width:0!important;float:none!important}
+#changelist {width:100%!important;max-width:100%;}
+#changelist-form {min-width:0!important;max-width:100%;overflow-x:auto}
+#changelist .results {overflow-x:auto;max-width:100%}
+#nav-sidebar,#toggle-nav-sidebar {display:none!important}
+.sc-odjava {background:transparent;color:#fff;border:0;cursor:pointer;padding:0;font:inherit;text-decoration:underline}
+@media(max-width:650px){#content{margin:10px auto!important;width:calc(100% - 20px)!important;padding:12px 4px!important}}

@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Šolska učilnica{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/slog.css' %}">
+</head>
+<body>
+<header class="glava">
+  <div class="glava-notri">
+    <a href="{% url 'domov' %}" class="znamka">Šolska učilnica</a>
+    {% if user.is_authenticated %}
+    <nav class="glavna-navigacija" aria-label="Glavna navigacija">
+      <a href="{% url 'domov' %}">Domov</a>
+      <a href="{% url 'profil' %}">Moj profil</a>
+      {% if vloga == 'Učenec' %}<a href="{% url 'moji_predmeti' %}">Moji predmeti</a>{% endif %}
+      {% if vloga == 'Administrator' %}<a href="{% url 'admin:index' %}">Administracija</a>{% endif %}
+    </nav>
+    <div class="prijavljen"><span>{{ user.get_full_name|default:user.username }} · {{ vloga }}</span>
+      <form action="{% url 'odjava' %}" method="post">{% csrf_token %}<button type="submit" class="gumb-odjava">Odjava</button></form>
+    </div>
+    {% else %}<nav class="glavna-navigacija"><a href="{% url 'prijava' %}">Prijava</a><a href="{% url 'registracija' %}">Registracija</a></nav>{% endif %}
+  </div>
+</header>
+<main class="vsebina">
+  {% for sporocilo in messages %}
+  <div class="obvestilo {% if 'success' in sporocilo.tags %}pozitivno{% else %}opozorilo{% endif %}" role="status">{{ sporocilo }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</main>
+<footer class="noga">Šolska učilnica · Šolski projekt</footer>
+</body></html>

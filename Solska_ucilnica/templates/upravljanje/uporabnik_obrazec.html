@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{% if uporabnik %}Uredi uporabnika{% else %}Dodaj uporabnika{% endif %} | Šolska učilnica{% endblock %}
+{% block content %}
+<div class="ozka-stran"><a href="{% url 'upravljanje_uporabniki' %}" class="nazaj">Nazaj na uporabnike</a>
+<h1>{% if uporabnik %}Uredi uporabnika{% else %}Dodaj uporabnika{% endif %}</h1>
+<section class="panel"><form method="post" class="obrazec">{% csrf_token %}
+{{ obrazec.non_field_errors }}
+{% for polje in obrazec %}<div class="polje">{{ polje.label_tag }}{{ polje }}
+{% if polje.help_text %}<small>{{ polje.help_text }}</small>{% endif %}
+{{ polje.errors }}</div>{% endfor %}
+<button type="submit" class="gumb">Shrani</button>
+</form></section>
+{% if uporabnik %}<form method="post" action="{% url 'upravljanje_uporabnik_izbrisi' uporabnik.pk %}" onsubmit="return confirm('Res izbrišem tega uporabnika in njegove oddane naloge?');">{% csrf_token %}<button type="submit" class="mali-gumb nevarno">Izbriši uporabnika</button></form>{% endif %}
+</div>
+{% endblock %}

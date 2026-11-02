@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}{% if predmet %}Uredi predmet{% else %}Dodaj predmet{% endif %} | Šolska učilnica{% endblock %}
+{% block content %}
+<div class="ozka-stran">
+<a href="{% url 'upravljanje_predmeti' %}" class="nazaj">Nazaj na predmete</a>
+<h1>{% if predmet %}Uredi predmet{% else %}Dodaj predmet{% endif %}</h1>
+<section class="panel">
+<form method="post" class="obrazec">{% csrf_token %}
+{{ obrazec.non_field_errors }}
+<div class="polje">{{ obrazec.naziv.label_tag }}{{ obrazec.naziv }}{{ obrazec.naziv.errors }}</div>
+<details class="dodatne-nastavitve" {% if obrazec.ucitelji.errors or obrazec.ucenci.errors %}open{% endif %}>
+<summary>Dodeli učitelje in učence (neobvezno)</summary>
+<p class="pomocno">Izberi uporabnike, povezane s tem predmetom. To lahko urediš tudi pozneje.</p>
+<div class="polje"><strong>Učitelji</strong><div class="izbirni-seznam">{{ obrazec.ucitelji }}</div>{{ obrazec.ucitelji.errors }}</div>
+<div class="polje"><strong>Učenci</strong><div class="izbirni-seznam">{{ obrazec.ucenci }}</div>{{ obrazec.ucenci.errors }}</div>
+</details>
+<button type="submit" class="gumb">Shrani</button>
+</form></section>
+{% if predmet %}<form method="post" action="{% url 'upravljanje_predmet_izbrisi' predmet.pk %}" onsubmit="return confirm('Res izbrišem ta predmet in njegova gradiva ter naloge?');">{% csrf_token %}<button class="mali-gumb nevarno" type="submit">Izbriši predmet</button></form>{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Izberi predmete | Šolska učilnica{% endblock %}
+{% block content %}
+<a href="{% url 'domov' %}" class="nazaj">Nazaj na domačo stran</a>
+<div class="ozka-stran"><section class="panel"><p class="nadnaslov">UČENEC</p><h1>Izberi predmete</h1>
+<p class="podnaslov">Označi predmete, ki jih obiskuješ. Izberi vsaj dva.</p>
+<form method="post">{% csrf_token %}
+<div class="checklist">
+{% for p in predmeti %}<label class="predmet-check"><input type="checkbox" name="predmeti" value="{{ p.pk }}" {% if p.pk in izbrani %}checked{% endif %}> {{ p.naziv }}</label>{% endfor %}
+</div>
+<button type="submit" class="gumb">Shrani predmete</button></form>
+</section></div>
+{% endblock %}
